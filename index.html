@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Senal Dharmasiri</title>
+<meta name="description" content="Senal Dharmasiri – Doctoral researcher in Machine Perception and Neurocinematics at Cardiff School of Technologies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Manrope:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an academic profile. Compact header with circular portrait, then labelled sections in a two-column grid. */
+:root {
+  --paper: #f4f5f7;
+  --surface: #ffffff;
+  --ink: #15171c;
+  --muted: #5b606d;
+  --line: #d8dbe2;
+  --accent: #8c3b4a;
+  --accent-soft: #f3e6e9;
+  --strip: #1b1c21;
+  --display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.5rem;
+  --step-3: 2.25rem;
+  --step-4: clamp(2.75rem, 7vw, 5.25rem);
+  --wrap: 72rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111318; --surface: #181a20; --ink: #eceef2; --muted: #9da2ae;
+    --line: #2a2d36; --accent: #e3909f; --accent-soft: #2b1d22; --strip: #050608;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #111318; --surface: #181a20; --ink: #eceef2; --muted: #9da2ae;
+  --line: #2a2d36; --accent: #e3909f; --accent-soft: #2b1d22; --strip: #050608;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  padding-inline: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: var(--accent); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+
+.wrap { max-width: var(--wrap); margin-inline: auto; }
+
+/* Top bar */
+.topbar {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
+  padding-block: 1.25rem; border-bottom: 1px solid var(--line);
+  font-family: var(--mono); font-size: var(--step--1); letter-spacing: 0.04em;
+}
+.topbar .brand { font-family: var(--body); font-weight: 700; font-size: var(--step-0); letter-spacing: 0; text-decoration: none; }
+.topbar nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.topbar nav a { text-decoration: none; color: var(--muted); text-transform: uppercase; }
+.topbar nav a:hover { color: var(--accent); }
+
+/* Hero */
+.hero {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 2.75rem);
+  align-items: center; padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+.portrait {
+  width: 9.5rem; height: 9.5rem; max-width: 100%; border-radius: 50%; object-fit: cover; object-position: 50% 30%;
+  display: block; border: 1px solid var(--line);
+}
+.hero-text { display: grid; gap: 0.9rem; min-width: 0; }
+.hero h1 { font-family: var(--display); font-weight: 500; font-size: clamp(2.25rem, 5vw, 3.25rem); line-height: 1.05; letter-spacing: -0.01em; }
+.role { font-size: var(--step-1); line-height: 1.45; color: var(--ink); }
+.role span { display: block; color: var(--muted); font-size: var(--step-0); }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.9375rem; font-weight: 600; }
+.hero-actions a { text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+.hero-actions a:hover { border-color: var(--accent); }
+
+/* Sections */
+.section {
+  display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 2rem;
+  padding-block: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--line);
+}
+.slate { margin: 0; font-family: var(--display); font-weight: 500; font-size: var(--step-2); line-height: 1.2; }
+.section-body { min-width: 0; display: grid; gap: 1.75rem; }
+.prose { display: grid; gap: 1rem; max-width: 68ch; color: var(--ink); font-size: 1.0625rem; line-height: 1.7; }
+.three-fields { font-size: 0.9375rem; color: var(--muted); }
+.three-fields b { color: var(--ink); font-weight: 600; margin-right: 0.25rem; }
+
+/* Publications */
+.pubs { list-style: none; margin: 0; padding: 0; display: grid; }
+.pub { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 1.25rem; padding-block: 1.25rem; border-bottom: 1px solid var(--line); }
+.pub:first-child { padding-top: 0; }
+.pub .yr { font-family: var(--mono); font-size: var(--step--1); color: var(--muted); padding-top: 0.3rem; font-variant-numeric: tabular-nums; }
+.pub h3 { font-family: var(--display); font-weight: 500; font-size: var(--step-1); line-height: 1.3; }
+.pub h3 a { text-decoration: none; }
+.pub h3 a:hover { text-decoration: underline; }
+.pub .authors { color: var(--muted); font-size: 0.9375rem; margin-top: 0.35rem; }
+.pub .authors .me { color: var(--ink); font-weight: 600; }
+.pub .venue { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: 0.6rem; font-size: var(--step--1); color: var(--muted); }
+.tag { font-family: var(--mono); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.2rem 0.55rem; border-radius: 3px; border: 1px solid currentColor; }
+.tag.submitted { color: var(--accent); }
+.tag.prep { color: var(--muted); }
+.tag.presented { color: var(--ink); background: var(--accent-soft); border-color: transparent; }
+
+/* Links */
+.links { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 0.75rem; }
+.links a {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  padding: 1rem 1.1rem; background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+  text-decoration: none; font-weight: 600;
+}
+.links a small { font-family: var(--mono); font-weight: 400; font-size: 0.6875rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.links a:hover { border-color: var(--accent); }
+.links a:hover small { color: var(--accent); }
+
+/* Projects */
+.projects { display: grid; gap: 1rem; }
+.project { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 1.4rem 1.5rem; display: grid; gap: 0.75rem; }
+.project header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.project h3 { font-family: var(--display); font-weight: 500; font-size: var(--step-2); line-height: 1.2; flex: 1 1 22rem; min-width: 0; }
+.project .yr { font-family: var(--mono); font-size: var(--step--1); color: var(--accent); font-variant-numeric: tabular-nums; }
+.project p { color: var(--muted); max-width: 70ch; }
+.project .more { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; font-size: 0.9375rem; }
+.project .more a { font-weight: 600; }
+
+/* Timeline (work, education) */
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; }
+.timeline li { display: grid; grid-template-columns: 8rem minmax(0, 1fr); gap: 1.25rem; padding-block: 1rem; border-bottom: 1px solid var(--line); }
+.timeline li:first-child { padding-top: 0; }
+.timeline .when { font-family: var(--mono); font-size: var(--step--1); color: var(--muted); padding-top: 0.2rem; font-variant-numeric: tabular-nums; }
+.timeline h3 { font-size: var(--step-0); font-weight: 700; line-height: 1.4; }
+.timeline .where { color: var(--accent); font-weight: 600; }
+.timeline p { color: var(--muted); font-size: 0.9375rem; margin-top: 0.2rem; }
+
+/* Small lists */
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 2.5rem; }
+.cols h3 { font-family: var(--mono); font-size: var(--step--1); font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.9rem; }
+.plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
+.plain li { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; padding-bottom: 0.7rem; border-bottom: 1px dashed var(--line); }
+.plain li span:last-child { font-family: var(--mono); font-size: var(--step--1); color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* Footer */
+footer { border-top: 1px solid var(--line); padding-block: 2rem 3rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; font-size: var(--step--1); color: var(--muted); }
+
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; }
+  .portrait { width: 7.5rem; height: 7.5rem; }
+  .section { grid-template-columns: 1fr; gap: 1.25rem; }
+  .pub, .timeline li { grid-template-columns: 1fr; gap: 0.3rem; }
+  .topbar nav { gap: 0.9rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .links a { transition: background-color .2s, border-color .2s, color .2s; }
+}
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <header class="topbar">
+    <a class="brand" href="#top">Senal Dharmasiri</a>
+    <nav aria-label="Sections">
+      <a href="#about">About</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <img class="portrait" src="portrait.jpg" alt="Portrait of Senal Dharmasiri" width="600" height="900">
+      <div class="hero-text">
+        <h1>Senal Dharmasiri</h1>
+        <p class="role">Doctoral Researcher in Machine Perception and Neurocinematics<span>Cardiff School of Technologies, Cardiff Metropolitan University · Associate Tutor</span></p>
+        <div class="hero-actions">
+          <a href="https://orcid.org/0000-0002-0153-320X">ORCID</a>
+          <a href="https://www.researchgate.net/profile/Senal-Dharmasiri">ResearchGate</a>
+          <a href="https://pure.cardiffmet.ac.uk/en/persons/senal-dharmasiri/">Cardiff Met PURE</a>
+          <a href="https://github.com/shenalme">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <h2 class="slate">Research profile</h2>
+      <div class="section-body">
+        <div class="prose">
+          <p>I am a doctoral researcher at Cardiff School of Technologies, Cardiff Metropolitan University. My doctoral research, <em>Predictive Modelling of Cinematic Spectatorship</em>, integrates deep learning, cognitive neuroscience and film theory to investigate how audiences perceive, interpret and respond emotionally to moving images.</p>
+          <p>Prior to my doctoral studies, I worked for several years as a filmmaker, writing, directing and editing short films. This practice-based background informs my research in two ways: it shapes how computational models can represent formal choices such as shot composition, pacing and sound design, and it motivates the use of neural measures to examine viewers’ implicit responses to narrative.</p>
+          <p>I also teach as an Associate Tutor at Cardiff School of Technologies and contribute to STEM outreach across Wales. I welcome enquiries regarding collaboration in perceptual AI, neurocinematics and affective computing.</p>
+        </div>
+        <p class="three-fields"><b>Research interests:</b> machine perception; neurocinematics; EEG and brain–computer interfaces; affective computing; computational film analysis.</p>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <h2 class="slate">Publications</h2>
+      <div class="section-body">
+        <ul class="pubs">
+          <li class="pub">
+            <span class="yr">2026</span>
+            <div>
+              <h3><a href="https://www.baftss.org/pgr-poster-2026.html">Evaluating AI Models against Neural Spectatorship: A Case Study of Mr. Bean</a></h3>
+              <p class="authors"><span class="me">Senal Dharmasiri</span></p>
+              <p class="venue"><span class="tag presented">Poster</span>British Association of Film, Television &amp; Screen Studies Conference 2026</p>
+            </div>
+          </li>
+          <li class="pub">
+            <span class="yr">2025</span>
+            <div>
+              <h3>Threat, Trust &amp; Curiosity: Exploring the Role of Emotional User Interfaces in Shaping Perceptions around Online Security</h3>
+              <p class="authors">Linda Mohaisen, <span class="me">Senal Dharmasiri</span>, <a href="https://fionacarroll.eu/">Fiona Carroll</a>, <a href="https://www.cardiffmet.ac.uk/staff/sabeen-tahir/">Sabeen Tahir</a></p>
+              <p class="venue"><span class="tag submitted">Submitted</span>Manuscript</p>
+            </div>
+          </li>
+          <li class="pub">
+            <span class="yr">2025</span>
+            <div>
+              <h3>Towards Emotional Interfaces: An EEG Dataset for Human–Computer Interaction Research</h3>
+              <p class="authors">Linda Mohaisen, <span class="me">Senal Dharmasiri</span>, <a href="https://fionacarroll.eu/">Fiona Carroll</a>, <a href="https://www.cardiffmet.ac.uk/staff/sabeen-tahir/">Sabeen Tahir</a></p>
+              <p class="venue"><span class="tag submitted">Submitted</span>Manuscript</p>
+            </div>
+          </li>
+          <li class="pub">
+            <span class="yr">—</span>
+            <div>
+              <h3>Why Are Audiences Moved by Film? Learning Shared Patterns of Audience Engagement from Content Features</h3>
+              <p class="authors"><span class="me">Senal Dharmasiri</span>, Wai Keung Fung, Shadan Khan Khattak, Esyin Chew</p>
+              <p class="venue"><span class="tag prep">In preparation</span></p>
+            </div>
+          </li>
+          <li class="pub">
+            <span class="yr">—</span>
+            <div>
+              <h3>Cross-Species Brain-to-Brain Communication: A Systematic Review of Interfaces Linking Distinct Biological Nervous Systems</h3>
+              <p class="authors"><span class="me">Senal Dharmasiri</span></p>
+              <p class="venue"><span class="tag prep">In preparation</span></p>
+            </div>
+          </li>
+          <li class="pub">
+            <span class="yr">2019</span>
+            <div>
+              <h3>Computational Intelligence for Filmmaking</h3>
+              <p class="authors"><span class="me">Senal Dharmasiri</span>, Gihan Herath</p>
+              <p class="venue"><span class="tag presented">Conference paper</span>AiRS 2019 · Annual International Research Symposium (ICBT)</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <h2 class="slate">Profiles</h2>
+      <div class="section-body">
+        <div class="links">
+          <a href="https://www.researchgate.net/profile/Senal-Dharmasiri">ResearchGate <small>Papers ↗</small></a>
+          <a href="https://orcid.org/0000-0002-0153-320X">ORCID <small>0000-0002-0153-320X</small></a>
+          <a href="https://pure.cardiffmet.ac.uk/en/persons/senal-dharmasiri/">PURE · Cardiff Met <small>Profile ↗</small></a>
+          <a href="https://github.com/shenalme">GitHub <small>@shenalme</small></a>
+          <a href="https://www.sensivlabs.co.uk">Sensiv Cinematics <small>Studio ↗</small></a>
+          <a href="https://www.amazon.co.uk/stores/Senal-Rashantha-Dharmasiri/author/B07T57RMSW/allbooks">Amazon Kindle <small>Books ↗</small></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <h2 class="slate">Research projects</h2>
+      <div class="section-body">
+        <div class="projects">
+          <article class="project">
+            <header><h3>Kudapola Unnanse 1848</h3><span class="yr">2026</span></header>
+            <p>Feature-length motion picture (2026).</p>
+          </article>
+          <article class="project">
+            <header><h3>Empowering Handloom Artistry: A Digital Approach to Globalise the Heritage Handloom Industry in Sri Lanka</h3><span class="yr">2025</span></header>
+            <p>A Sri Lanka–UK collaboration supported by the British Council’s Connections Through Culture grant programme, including the Threaded Heritage exhibition. Role: Research Assistant, with Prof. Chaminda Hewage, Dr. Sumith Gopura and Dr. Tharindu Gunawardena.</p>
+            <div class="more">
+              <a href="https://lankatalks.com/post/british-council-announces-support-for-three-sri-lanka-uk-collaborations-through-the-connections-through-culture-grant-programme">LankaTalks announcement ↗</a>
+              <a href="https://www.instagram.com/p/DGAZnletmSp/">Instagram ↗</a>
+            </div>
+          </article>
+          <article class="project">
+            <header><h3>Data Fusion Dynamics: A Collaborative UK–Saudi Initiative in Cybersecurity and Artificial Intelligence</h3><span class="yr">2023 – 2024</span></header>
+            <p>Funded by the British Council UK–Saudi Challenge Fund. PI: <a href="https://www.cardiffmet.ac.uk/staff/sabeen-tahir/">Dr. Sabeen Tahir</a> (Cardiff Met). Co-Is: Dr. Sheikh Tahir and <a href="https://fionacarroll.eu/">Dr. Fiona Carroll</a> (Cardiff Met), Dr. Reem Moteab Alotaibi and Dr. Linda Mohaisen (King Abdulaziz University), and Prof. Roberto Di Pietro (KAUST).</p>
+            <div class="more"><a href="https://researchfeatures.com/data-fusion-dynamics-collaborative-uk-saudi-initiative-cybersecurity-ai/">Research Features article ↗</a></div>
+          </article>
+          <article class="project">
+            <header><h3>DTLSN: Digital Technology Learning Support Network</h3><span class="yr">UKCRF</span></header>
+            <p>Funded by the UK Community Renewal Fund. PI: <a href="https://fionacarroll.eu/">Dr. Fiona Carroll</a>. Co-Is: <a href="https://www.cardiffmet.ac.uk/staff/chaminda-hewage/">Dr. Chaminda Hewage</a> (Cardiff Met) and Prof. Faron Moller (Swansea University).</p>
+            <div class="more">
+              <a href="https://www.dtlsn.co.uk/en/">dtlsn.co.uk ↗</a>
+              <a href="https://medium.com/@dtlsnproject/about">Medium ↗</a>
+              <a href="https://youtu.be/MzXdRveLkXo">Video ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <h2 class="slate">Appointments</h2>
+      <div class="section-body">
+        <ul class="timeline">
+          <li><span class="when">2023 – now</span><div><h3><a href="https://pure.cardiffmet.ac.uk/en/persons/senal-dharmasiri">Associate Tutor</a> · <span class="where">Cardiff School of Technologies</span></h3></div></li>
+          <li><span class="when">2025</span><div><h3>Research Assistant · <span class="where">Empowering Handloom Artistry</span></h3><p>Prof. Chaminda Hewage, Dr. Sumith Gopura, Dr. Tharindu Gunawardena</p></div></li>
+          <li><span class="when">2023 – 2024</span><div><h3>Research Assistant · <span class="where">Data Fusion Dynamics</span></h3><p>Dr. Linda Mohaisen, Dr. Sabeen Tahir, Dr. Fiona Carroll, Dr. Sheikh Tahir, Dr. Reem Moteab Alotaibi, Prof. Roberto Di Pietro</p></div></li>
+          <li><span class="when">Project</span><div><h3>Research Assistant · <span class="where">Cryopreservation</span></h3><p>PI: <a href="https://www.barrybentley.co.uk/">Dr. Barry L. Bentley</a></p></div></li>
+          <li><span class="when">2021 – 2022</span><div><h3>Lecturer in Computing · <span class="where">Bridgend College</span></h3></div></li>
+          <li><span class="when">2020 – now</span><div><h3>Intern · <span class="where"><a href="https://pure.cardiffmet.ac.uk/en/organisations/eureka-robotics-centre">Eureka Robotics Centre</a></span></h3><p>MSc internship on autonomous drone cinematography (2022). Supervisors: <a href="https://www.cardiffmet.ac.uk/staff/esyin-chew/">Dr. Esyin Chew</a>, Dr. Chow Sing Sia</p></div></li>
+          <li><span class="when">Outreach</span><div><h3>STEM Ambassador</h3><p><a href="https://www.linkedin.com/posts/senal-dharmasiri-0a46a3148_a-few-months-ago-i-delivered-a-3-day-workshop-activity-6865133124494381057-6-R3">Three-day workshop at Coleg Penybont, Bridgend College</a> · <a href="https://www.linkedin.com/posts/senal-dharmasiri-0a46a3148_nao-ran-into-some-trouble-during-his-morning-activity-6933079085325688832-H0MW">Ysgol Nantgwyn</a>, organised by First Campus with the Eureka Robotics Centre</p></div></li>
+          <li><span class="when">2020</span><div><h3>Social Media Manager · <span class="where"><a href="https://arc.nus.edu.sg/wordpress/wp-content/uploads/2020/04/RiTA2020-Call-for-Paper-external-v3.pdf">IEEE RiTA 2020</a></span></h3><p>8th International Conference on Robot Intelligence Technology and Applications</p></div></li>
+          <li><span class="when">2016 – 2019</span><div><h3>Associate Director, Creative Services · <span class="where">Vision Link Media</span></h3></div></li>
+          <li><span class="when">Earlier</span><div><h3>Intern Editor · <span class="where">TVT Sri Lanka</span></h3></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <h2 class="slate">Education</h2>
+      <div class="section-body">
+        <ul class="timeline">
+          <li><span class="when">2023 – 2027</span><div><h3>PhD (reading) · <span class="where">Predictive Modelling of Cinematic Spectatorship</span></h3><p>Supervisors: <a href="https://www.cardiffmet.ac.uk/staff/shadan-khan-khattak/">Dr. Shadan Khan Khattak</a>, <a href="https://www.cardiffmet.ac.uk/staff/wai-keung-fung/">Dr. Wai Keung Fung</a></p></div></li>
+          <li><span class="when">2020 – 2022</span><div><h3>MSc Information Technology (Internship) · <span class="where">Eureka Robotics Centre</span></h3><p>Dissertation: Autonomous Drone Cinematography. Supervisor: <a href="https://www.cardiffmet.ac.uk/staff/esyin-chew/">Dr. Esyin Chew</a></p></div></li>
+          <li><span class="when">2016 – 2019</span><div><h3>BSc (Hons) Software Engineering</h3><p>Dissertation: Computational Intelligence for Filmmaking. Supervisor: Mr. Gihan Herath</p></div></li>
+          <li><span class="when">2016 – 2019</span><div><h3>Certificate in Psychology · <span class="where">American College of Higher Education</span></h3></div></li>
+          <li><span class="when">2015</span><div><h3>HND Information Technology · <span class="where">International School of Business &amp; Technology</span></h3></div></li>
+          <li><span class="when">2015</span><div><h3>HND Computer Science · <span class="where">International School of Business &amp; Technology</span></h3></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="credentials">
+      <h2 class="slate">Memberships &amp; certifications</h2>
+      <div class="section-body">
+        <div class="cols">
+          <div>
+            <h3>Memberships</h3>
+            <ul class="plain">
+              <li><span><a href="https://www.baftss.org/">BAFTSS</a> · British Association of Film, Television and Screen Studies</span><span>2024 –</span></li>
+              <li><span>IEEE Member (102524476)</span><span>2026 –</span></li>
+              <li><span>IEEE Computational Intelligence Society</span><span>2026 –</span></li>
+              <li><span>IEEE Systems, Man, and Cybernetics Society</span><span>2026 –</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Certifications</h3>
+            <ul class="plain">
+              <li><span>BCI &amp; Neurotechnology Spring School</span><span>2024</span></li>
+              <li><span>MATLAB Onramp · Machine Learning · Deep Learning</span><span>MathWorks</span></li>
+              <li><span>Cybersecurity Essentials</span><span>Cisco</span></li>
+              <li><span>AI Foundations: Machine Learning</span><span>NASBA</span></li>
+              <li><span>Tableau Essential Training</span><span>NASBA</span></li>
+              <li><span>Fundamentals of Digital Marketing</span><span>Google</span></li>
+              <li><span>Digital Citizenship and Safety</span><span>Google</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Senal Dharmasiri · Cardiff School of Technologies, Cardiff Metropolitan University</span>
+    <span>ORCID 0000-0002-0153-320X</span>
+  </footer>
+</div>
+
+</body>
+</html>
